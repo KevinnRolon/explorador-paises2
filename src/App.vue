@@ -46,6 +46,7 @@
           :paginationPageSize="15"
           @grid-ready="onGridReady"
           @rowClicked="onRowClicked"
+          :localeText="localeText"
           style="width: 100%; height: 100%;"
         />
       </div>
@@ -112,6 +113,39 @@ onMounted(() => {
 watch(darkMode, (newVal) => {
   localStorage.setItem('darkMode', newVal)
 })
+
+const localeText = {
+  equals: 'Igual a',
+  notEqual: 'No igual a',
+  lessThan: 'Menor que',
+  lessThanOrEqual: 'Menor o igual que',
+  greaterThan: 'Mayor que',
+  greaterThanOrEqual: 'Mayor o igual que',
+  inRange: 'En el rango',
+  contains: 'Contiene',
+  notContains: 'No contiene',
+  startsWith: 'Empieza con',
+  endsWith: 'Termina con',
+  page: 'Página',
+  more: 'Más',
+  to: 'a',
+  of: 'de',
+  next: 'Siguiente',
+  last: 'Último',
+  first: 'Primero',
+  previous: 'Anterior',
+  loadingOoo: 'Cargando...',
+  pageSize: 'Tamaño de página',
+  applyFilter: 'Aplicar filtro...',
+  clearFilter: 'Limpiar filtro',
+  cancelFilter: 'Cancelar',
+  columns: 'Columnas',
+  filters: 'Filtros',
+  sortAscending: 'Ordenar ascendente',
+  sortDescending: 'Ordenar descendente',
+  resetColumns: 'Reiniciar columnas',
+  noRowsToShow: 'No hay datos para mostrar',
+}
 
 const columnDefs = ref([
   {
