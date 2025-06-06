@@ -113,7 +113,6 @@ import 'ag-grid-community/styles/ag-theme-alpine.css'
 import { ModuleRegistry, AllCommunityModules } from 'ag-grid-community'
 ModuleRegistry.registerModules(AllCommunityModules) // Registra los módulos de AG Grid
 
-
 const continentOptions = ['Asia', 'Europe', 'Africa', 'Oceania', 'Americas']
 
 // Estado reactivo para el modo oscuro
@@ -247,7 +246,13 @@ onMounted(async () => {
       throw new Error(`HTTP error! Status: ${res.status}`);
     }
     const data = await res.json();
-    rowData.value = Array.isArray(data) ? data : [];
+
+    // Verifica si la respuesta es un arreglo
+    if (Array.isArray(data)) {
+      rowData.value = data;
+    } else {
+      console.error('Los datos recibidos no son un arreglo:', data);
+    }
   } catch (e) {
     console.error('Error cargando países:', e);
   }
